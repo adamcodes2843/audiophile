@@ -1,6 +1,7 @@
 import './globals.css'
 import { Manrope } from 'next/font/google'
-import Nav from './Nav'
+import Nav from './Components/Nav'
+import Footer from './Components/Footer'
 
 
 const manrope = Manrope({
@@ -23,9 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.className}, text-body flex flex-col`}>
+      <body className={`${manrope.className}, text-body flex flex-col jusify-between m-0 p-0`}>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   )

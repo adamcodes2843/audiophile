@@ -1,5 +1,6 @@
-import CategoryLinks from './HomeComponents/CategoryLinks'
-import HeaderFigure from './HomeComponents/HeaderFigure'
+import CategoryLinks from './Components/CategoryLinks'
+import HeaderFigure from './Components/HeaderFigure'
+import BestAudio from './Components/BestAudio'
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
     <main className="w-full">
       <HeaderFigure />
       <CategoryLinks />
+      <BestAudio />
     </main>
     </>
   )
