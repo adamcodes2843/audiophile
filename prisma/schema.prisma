@@ -11,19 +11,25 @@ datasource db {
 }
 
 
-model Products {
+model Product {
   id Int @id @default(autoincrement())
   name String
   cartImage String
   price Int
+  category String
+  inCart Int @default(0)
+  cart Cart? @relation(fields: [cartId], references: [id])
+  cartId String?
 }
 
 model Cart {
   id String @id @default(uuid())
+  total Int
   shipping Int @default(50)
   vat Int
   grandTotal Int
-  customer Customer
+  products Product[]
+  customer Customer?
 }
 
 model Customer {
@@ -39,8 +45,8 @@ model Customer {
   cashOnDelivery Boolean @default(false)
   eMoneyNumber Int?
   eMoneyPIN Int?
+  cart Cart @relation(fields: [cartId], references: [id])
+  cartId String @unique
   submitted Boolean @default(false)
   timeSubmitted DateTime? @default(now())
-  cartSubmitted Cart @relation(fields: [cartId], references: [id])
-  cartId String
 }
