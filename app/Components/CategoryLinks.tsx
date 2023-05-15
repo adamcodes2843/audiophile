@@ -23,7 +23,7 @@ const CategoryLinks = () => {
                 <Image src={shadow} alt="" width='200' height='200' className="absolute z-10 top-20"/>
                 <div className="bg-audiocolor-w3 h-40 flex flex-col justify-end items-center w-full rounded-lg">
                   <h4 className="mb-1 font-bold">{category.category.toUpperCase()}</h4>
-                  <Link href='' className="mb-4 text-subtitle opacity-60 flex items-center gap-1 hover:text-audiocolor-oj2">
+                  <Link href={`/categories/${category.category}`} className="mb-4 text-subtitle opacity-60 flex items-center gap-1 hover:text-audiocolor-oj2">
                     SHOP <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3 text-audiocolor-oj2" />
                   </Link>
                 </div>

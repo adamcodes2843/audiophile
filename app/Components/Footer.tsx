@@ -8,10 +8,10 @@ const Footer = () => {
         <div className='h-1 w-1/3 bg-audiocolor-oj2 mb-2'/>
         <h1 className="text-H3 my-10">audiophile</h1>
         <ul className="flex flex-col justify-around py-4 gap-4 mb-10">
-            <Link href=''>HOME</Link>
-            <Link href=''>HEADPHONES</Link>
-            <Link href=''>SPEAKERS</Link>
-            <Link href=''>EARPHONES</Link>
+            <Link href='/'>HOME</Link>
+            <Link href='/categories/headphones'>HEADPHONES</Link>
+            <Link href='/categories/speakers'>SPEAKERS</Link>
+            <Link href='/categories/earphones'>EARPHONES</Link>
         </ul>
         <p className='opacity-50 mb-10  text-body font-normal'>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and vist our demo facility - we're open 7 days a week.</p>
         <p className='opacity-50 mb-10  text-body font-normal'>Copyright 2021. All Rights Reserved</p>
