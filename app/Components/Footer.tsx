@@ -4,7 +4,7 @@ import { faFacebookSquare, faTwitterSquare, faInstagram } from '@fortawesome/fre
 
 const Footer = () => {
   return (
-    <footer className="bg-audiocolor-b2 text-audiocolor-w1 flex flex-col justify-between items-center text-center px-6">
+    <footer className="bg-audiocolor-b2 text-audiocolor-w1 flex flex-col justify-between items-center text-center px-6 mt-auto">
         <div className='h-1 w-1/3 bg-audiocolor-oj2 mb-2'/>
         <h1 className="text-H3 my-10">audiophile</h1>
         <ul className="flex flex-col justify-around py-4 gap-4 mb-10">

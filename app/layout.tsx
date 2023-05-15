@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.className}, text-body flex flex-col jusify-between m-0 p-0`}>
+      <body className={`${manrope.className}, text-body flex flex-col jusify-between m-0 p-0 min-h-screen`}>
         <Nav />
         {children}
         <Footer />
