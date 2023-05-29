@@ -15,6 +15,7 @@ module.exports = {
         'oj2': '#D87D4A',
         'b1': '#101010',
         'b2': '#000000',
+        'g1': '#CFCFCF'
       },
     },
     fontSize: {

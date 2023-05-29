@@ -12,11 +12,18 @@ const CategoryLinks = () => {
     let YX1Preview = '/../assets/product-yx1-earphones/mobile/image-removebg-preview(42).svg'
     let shadow = '/../assets/home/mobile/Oval Copy 4.svg'
 
+    let organizedData = () => {
+      let neededData = data.filter((homeCategory)=> categoryLinkNames.indexOf(homeCategory.name) >= 0)
+      let earphoneData:any = neededData.shift()
+      let orderedData = neededData.concat(earphoneData)
+      return orderedData
+    }
+    
   return (
     <section className="w-full">
-        <ul className='my-10 mx-6 flex flex-col'>
-        {data.filter((homeCategory)=> categoryLinkNames.indexOf(homeCategory.name) >= 0).map((category) => (
-            <li key={category.id} value={category.name === 'XX99 Mark I Headphones' ? 1 : category.name === 'ZX9 Speaker' ? 2 : 3} className="relative h-56 flex flex-col justify-end items-center w-full">
+        <ul className='my-10 mx-6 flex flex-col md:flex-row md:gap-3 md:mt-20 md:mx-10'>
+        {organizedData().map((category) => (
+            <li key={category.id} className="relative h-56 flex flex-col justify-end items-center w-full">
                 <Image src={category.name === 'XX99 Mark I Headphones' ? MarkIPreview : category.name === 'ZX9 Speaker' ? ZX9Preview : YX1Preview} alt="" width='85' height='85' className={`${category.name === 'YX1 Wireless Earphones' && 'w-28 h-28'} absolute z-10 top-4`} />
                 <Image src={shadow} alt="" width='200' height='200' className="absolute z-10 top-20"/>
                 <div className="bg-audiocolor-w3 h-40 flex flex-col justify-end items-center w-full rounded-lg">
@@ -26,7 +33,7 @@ const CategoryLinks = () => {
                   </Link>
                 </div>
             </li>
-        )).sort()}
+        ))}
         </ul>
     </section>
   )

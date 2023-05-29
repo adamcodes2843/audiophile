@@ -2,7 +2,7 @@
 
 const AddToCart = () => {
   return (
-    <div className="flex w-fill mx-6 gap-4 mt-8 h-12">
+    <div className="flex w-fill gap-4 mt-8 h-12">
         <div className="flex gap-6 items-center bg-audiocolor-w2 px-6">
             <button className="opacity-30">-</button>
             <div>1</div>
