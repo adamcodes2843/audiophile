@@ -15,11 +15,13 @@ export default function Category({params}: {
             <h1 className="mt-24 h-24 md:h-60 flex justify-center items-center bg-audiocolor-b2 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
             <ul className='px-6 md:px-10 pt-16 md:pt-28'>
             {reversedData.filter((cat) => cat.category == params.category).map((product)=> (
-              <li key={product.name} className="flex flex-col items-center text-center justify-between mb-24">
+              <li key={product.name} className="flex flex-col items-center text-center justify-between mb-20">
                 <img src={`/../.${product.categoryImage.mobile}`} alt="" className="rounded-lg mb-8 md:hidden" />
-                <img src={`/../.${product.categoryImage.tablet}`} alt="" className="rounded-lg mb-2 hidden md:block lg:hidden" />
+                <img src={`/../.${product.categoryImage.tablet}`} alt="" className="rounded-lg mb-12 hidden md:block lg:hidden" />
                 <img src={`/../.${product.categoryImage.desktop}`} alt="" className="rounded-lg mb-8 hidden lg:block" />
-                <h4 className="text-overline text-audiocolor-oj1 mb-6 md:mb-4 md:mt-10">{product.new && 'NEW PRODUCT'}</h4>
+                {
+                  product.new && <h4 className="text-overline text-audiocolor-oj1 mb-6  md:mb-4">{product.new && 'NEW PRODUCT'}</h4>
+                }
                 <h2 className="text-H4 md:text-H2">{product.name.split(' ').slice(0, product.name.split(' ').length - 1).join(' ')}</h2>
                 <h2 className="text-H4 mb-6 md:text-H2">{product.name.split(' ').slice(product.name.split(' ').length-1,).join() }</h2>
                 <p className="font-normal opacity-60 mb-6 md:mx-20 md:mt-3">{product.description}</p>

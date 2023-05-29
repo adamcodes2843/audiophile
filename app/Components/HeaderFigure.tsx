@@ -5,7 +5,7 @@ const HeaderFigure = () => {
   let tabletTitleImage = '/../assets/home/tablet/image-header.jpg'
   let desktopTitleImage = '../assets/home/tablet/image-header.jpg'
   return (
-    <figure className="text-audiocolor-w3 flex flex-col w-full text-center justify-center items-center">
+    <figure className="text-audiocolor-w3 flex flex-col w-full text-center justify-center items-center mb-6">
         <img src={mobileTitleImage} alt="" className="w-full h-full z-0 md:hidden" />
         <img src={tabletTitleImage} alt="" className="w-full h-full z-0 hidden md:block lg:hidden" />
         <img src={desktopTitleImage} alt="" className="w-full h-full z-0 hidden lg:block" />

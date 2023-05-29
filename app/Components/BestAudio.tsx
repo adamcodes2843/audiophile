@@ -1,6 +1,6 @@
 const BestAudio = () => {
   return (
-    <section className='mx-6 md:mx-10 mb-28 mt-20 md:mt-28 flex flex-col justify-around items-center gap-9'>
+    <section className='mx-6 md:mx-10 mb-28 mt-20 md:mt-24 flex flex-col justify-around items-center gap-9'>
         <img src='/../assets/shared/mobile/image-best-gear.jpg' alt='' className='rounded-lg md:hidden' />
         <img src='/../assets/shared/tablet/image-best-gear.jpg' alt='' className='rounded-lg hidden md:block' />
         <h2 className="text-H4 md:text-H2 md:mt-6 text-center w-[98%]">BRINGING YOU THE <span className='text-audiocolor-oj2'>BEST<br className="hidden md:block" /></span> AUDIO GEAR</h2>
