@@ -3,6 +3,7 @@ import CategoryLinks from "@/app/Components/CategoryLinks"
 import data from "../../data.json"
 import Link from 'next/link'
 import AddToCart from "./AddToCart"
+import NavProducts from "@/app/Components/NavProducts"
 
 function Product({params}: {
     params: { product: string}
@@ -28,7 +29,9 @@ function Product({params}: {
   
   
   return (
-    <div className="mt-28 md:mt-32 flex flex-col md:px-4">
+    <>
+    <NavProducts />
+    <div className="mt-24 pt-4 flex flex-col md:px-4 bg-audiocolor-w1 max-w-[1440px] lg:mx-auto">
         <Link href={'/'} className="mx-6 font-thin w-14 mt-2">Go Back</Link>
         <div className="px-6 md:flex md:gap-6 md:mb-10">
         <img src={'/../.' + productInfo[0].image.mobile} alt='' className="h-fill w-fill mx-auto rounded-lg mt-6 md:hidden" />
@@ -86,6 +89,7 @@ function Product({params}: {
         <CategoryLinks />
         <BestAudio />
     </div>
+    </>
   )
 }
 

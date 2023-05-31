@@ -2,6 +2,7 @@ import Link from 'next/link'
 import CategoryLinks from '../../Components/CategoryLinks'
 import BestAudio from '../../Components/BestAudio'
 import data from '../../data.json'
+import NavCategories from '@/app/Components/NavCategories'
 
 export default function Category({params}: {
     params: { category: string}
@@ -9,10 +10,12 @@ export default function Category({params}: {
 
   let reversedData = data.slice().reverse()
   return (
-    <section>
+    <>
+    <NavCategories />
+    <section className="bg-audiocolor-w1 max-w-[1440px] lg:mx-auto">
         { params.category === 'speakers' || params.category === 'headphones' || params.category === 'earphones' ?
             <>
-            <h1 className="mt-24 h-24 md:h-60 flex justify-center items-center bg-audiocolor-b2 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
+            <h1 className="mt-24 md:mt-0 h-24 md:h-[22rem] lg:h-[21rem] md:pt-20 flex justify-center items-center bg-audiocolor-b1 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
             <ul className='px-6 md:px-10 pt-16 md:pt-28'>
             {reversedData.filter((cat) => cat.category == params.category).map((product)=> (
               <li key={product.name} className="flex flex-col items-center text-center justify-between mb-20">
@@ -36,5 +39,6 @@ export default function Category({params}: {
         }
         
     </section>
+    </>
   )
 }
