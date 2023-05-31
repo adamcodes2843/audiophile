@@ -13,7 +13,7 @@ const HeaderFigure = () => {
         <h2 className="text-overline opacity-50">NEW PRODUCT</h2>
         <h1 className="text-H3 md:text-H1">XX99 MARK II <br /> HEADPHONES</h1>
         <p className="opacity-70 md:mx-auto max-w-lg md:w-[23rem] lg:text-start lg:ml-0">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-        <Link href="/products/xx99-mark-two-headphones" className="bg-audiocolor-oj2 mx-auto lg:ml-0 py-3 px-8">SEE PRODUCT</Link>
+        <Link href="/products/xx99-mark-two-headphones" className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 mx-auto lg:ml-0 py-3 px-8">SEE PRODUCT</Link>
         </figcaption>
     </figure>
   )

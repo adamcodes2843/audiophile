@@ -8,10 +8,10 @@ const NavHome = () => {
         <FontAwesomeIcon icon={faBars} className='h-6 md:mr-10 lg:hidden' />
         <h1 className="text-H4 tracking-normal lg:mr-auto">audiophile</h1>
         <ul className="hidden lg:flex lg:gap-8">
-          <Link href='/'>HOME</Link>
-          <Link href='/categories/headphones'>HEADPHONES</Link>
-          <Link href='/categories/speakers'>SPEAKERS</Link>
-          <Link href='/categories/earphones'>EARPHONES</Link>
+          <Link href='/' className="hover:text-audiocolor-oj2">HOME</Link>
+          <Link href='/categories/headphones' className="hover:text-audiocolor-oj2">HEADPHONES</Link>
+          <Link href='/categories/speakers' className="hover:text-audiocolor-oj2">SPEAKERS</Link>
+          <Link href='/categories/earphones' className="hover:text-audiocolor-oj2">EARPHONES</Link>
         </ul>
         <FontAwesomeIcon icon={faShoppingCart} className="bg-audiocolor-b2 h-6 md:ml-auto" />
     </nav>
