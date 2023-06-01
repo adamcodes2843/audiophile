@@ -1,6 +1,6 @@
 const BestAudio = () => {
   return (
-    <section className='mx-6 md:mx-10 lg:mx-40 mb-28 mt-20 md:mt-24 flex flex-col justify-around xl:justify-between xl:gap-12 items-center gap-9 xl:flex-row-reverse xl:mb-48'>
+    <section className='mx-6 md:mx-10 lg:mx-40 mb-28 mt-20 md:mt-24 flex flex-col justify-around xl:justify-between xl:gap-12 items-center gap-9 xl:flex-row-reverse xl:mt-36 xl:mb-36'>
         <img src='/../assets/shared/mobile/image-best-gear.jpg' alt='' className='rounded-lg md:hidden' />
         <img src='/../assets/shared/tablet/image-best-gear.jpg' alt='' className='rounded-lg hidden md:block xl:hidden' />
         <img src='/../assets/shared/desktop/image-best-gear.jpg' alt='' className='rounded-lg hidden xl:block w-1/2' />
