@@ -15,13 +15,13 @@ export default function Category({params}: {
     <section className="bg-audiocolor-w1 max-w-[1440px] lg:mx-auto">
         { params.category === 'speakers' || params.category === 'headphones' || params.category === 'earphones' ?
             <>
-            <h1 className="mt-24 py-14 md:py-0 md:mt-0 h-24 md:h-[22rem] lg:h-[21rem] md:pt-20 flex justify-center items-center bg-audiocolor-b1 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
+            <h1 className="mt-20 py-14 md:py-0 md:mt-0 h-24 md:h-[22rem] lg:h-[21rem] md:pt-20 flex justify-center items-center bg-audiocolor-b1 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
             <ul className='px-6 md:px-10 pt-16 md:pt-28 lg:px-40 lg:mt-16'>
             {reversedData.filter((cat) => cat.category == params.category).map((product)=> (
-              <li key={product.name} className={`flex flex-col ${product.slug === 'xx99-mark-one-headphones' || product.slug === 'zx7-speaker' ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-20 xl:gap-32 items-center text-center justify-between mb-20 md:mb-32 lg:mb-20`}>
+              <li key={product.name} className={`flex flex-col ${product.slug === 'xx99-mark-one-headphones' || product.slug === 'zx7-speaker' ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-20 xl:gap-32 items-center text-center justify-between mb-20 md:mb-32 lg:mb-20 xl:mb-32`}>
                 <img src={`/../.${product.categoryImage.mobile}`} alt="" className="rounded-lg mb-8 md:hidden" />
                 <img src={`/../.${product.categoryImage.tablet}`} alt="" className="rounded-lg mb-12 hidden md:block lg:hidden" />
-                <img src={`/../.${product.categoryImage.desktop}`} alt="" className={`rounded-lg mb-8 hidden lg:block lg:w-1/2 ${product.slug === 'xx99-mark-one-headphones' || product.slug === 'zx7-speaker' ? 'xl:pl-6' : 'xl:pr-6'}`} />
+                <img src={`/../.${product.categoryImage.desktop}`} alt="" className={`rounded-lg mb-8 hidden lg:block lg:w-1/2`} />
                 <div className="lg:flex lg:flex-col lg:w-1/2 lg:items-start xl:pr-3">
                 {
                   product.new && <h4 className="text-overline text-audiocolor-oj2 mb-6  md:mb-3">{product.new && 'NEW PRODUCT'}</h4>

@@ -12,7 +12,7 @@ const HomeProductCards = () => {
   let tabletSpeakerZX9 = '/../assets/home/tablet/image-speaker-zx9.png'
   let desktopSpeakerZX9 = '/../assets/home/desktop/image-speaker-zx9.png'
   return (
-    <section className='flex flex-col w-full mb-32 md:mb-24 px-6 lg:px-40 md:px-10 gap-6 md:gap-8 lg:gap-12 mt-40 md:mt-20 lg:mt-32 xl:mb-48'>
+    <section className='flex flex-col w-full mb-32 md:mb-24 px-6 lg:px-40 md:px-10 gap-6 md:gap-8 lg:gap-12 mt-40 md:mt-20 xl:mt-32 xl:mb-48'>
       {/* ZX9 SPEAKER */}
       <figure className="flex flex-col xl:flex-row items-center xl:justify-end text-center px-4 xl:px-0 xl:py-0 py-16 gap-7 rounded-lg bg-audiocolor-oj2 w-full overflow-hidden relative text-audiocolor-w1 xl:overflow-hidden xl:w-full">
         <img src={mobileSpeakerZX9} alt="ZX9 SPEAKERS" className='w-40 md:hidden' />

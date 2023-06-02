@@ -1,11 +1,28 @@
+'use client'
+
+import {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
-const NavCategories = () => {
+const NavProducts = () => {
+    const [showCategories, setShowCategories] = useState<boolean>(false)
+
+    const categorySwitch = () => {
+      if (!showCategories) {
+        setShowCategories(true)
+      } else {
+        setShowCategories(false)
+      }
+    }
+
+    console.log(showCategories)
+
     return (
-      <nav className="py-6 px-8 md:px-0 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full md:w-11/12 lg:w-10/12 z-10 absolute md:mx-10 md:left-0 md:right-0 lg:mx-auto max-w-[1080px]">
+      <nav className="py-6 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-10 absolute md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full">
+          <button type="button" onClick={() => categorySwitch()}>
           <FontAwesomeIcon icon={faBars} className='h-6 md:mr-10 lg:hidden' />
+          </button>
           <h1 className="text-H4 tracking-normal lg:mr-auto">audiophile</h1>
           <ul className="hidden lg:flex lg:gap-8">
             <Link href='/' className="hover:text-audiocolor-oj2">HOME</Link>
@@ -13,9 +30,9 @@ const NavCategories = () => {
             <Link href='/categories/speakers' className="hover:text-audiocolor-oj2">SPEAKERS</Link>
             <Link href='/categories/earphones' className="hover:text-audiocolor-oj2">EARPHONES</Link>
           </ul>
-          <FontAwesomeIcon icon={faShoppingCart} className="bg-audiocolor-b2 h-6 md:ml-auto" />
+          <img src={'/../assets/cart/CombinedShape.svg'} alt="cart" className="md:ml-auto" />
       </nav>
     )
   }
 
-export default NavCategories
+export default NavProducts
