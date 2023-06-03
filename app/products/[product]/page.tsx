@@ -57,7 +57,7 @@ function Product({params}: {
         <h4 className="text-H4 md:text-H3 mx-6 lg:mx-0 mt-16 md:mt-0 xl:mb-10">IN THE BOX</h4>
         <ul className="mx-6 xl:mx-0 mt-6 md:mt-0 flex flex-col">
           {productInfo[0].includes.map((item: any) => (
-            <li key={productInfo[0].id} className="mb-2 flex"><span className="text-audiocolor-oj2 w-10 font-bold">{item.quantity}x</span><span className=" font-normal opacity-70">{item.item}</span></li>
+            <li key={Math.random()} className="mb-2 flex"><span className="text-audiocolor-oj2 w-10 font-bold">{item.quantity}x</span><span className=" font-normal opacity-70">{item.item}</span></li>
           ))}
         </ul>
         </div>

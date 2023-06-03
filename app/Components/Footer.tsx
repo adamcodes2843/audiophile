@@ -24,9 +24,9 @@ const Footer = () => {
         </div>
         <div className='flex h-7 justify-center md:justify-start mb-10 gap-3 xl:w-1/2 xl:justify-end xl:h-full xl:mt-20'>
             <p className='opacity-50 mb-10  text-body font-normal hidden md:block xl:hidden md:mr-auto'>Copyright 2021. All Rights Reserved</p>
-            <FontAwesomeIcon icon={faFacebookSquare} className="w-7 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
-            <FontAwesomeIcon icon={faTwitterSquare} className="w-7 bg-audiocolor-b1 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
-            <FontAwesomeIcon icon={faInstagram} className="w-7 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
+            <FontAwesomeIcon icon={faFacebookSquare} className="w-7 h-7 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
+            <FontAwesomeIcon icon={faTwitterSquare} className="w-7 h-7 bg-audiocolor-b1 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
+            <FontAwesomeIcon icon={faInstagram} className="w-7 h-7 hover:text-audiocolor-oj2 hover:cursor-pointer"/>
         </div>
         </div>
     </footer>

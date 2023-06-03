@@ -20,7 +20,7 @@ const HomeProductCards = () => {
         <img src={desktopSpeakerZX9} alt="ZX9 SPEAKERS" className='w-[23rem] hidden xl:block absolute left-32 -bottom-3 z-40' />
         <h3 className="text-H2 md:text-H1 font-semibold mt-2 md:mt-14 lg:mt-6 xl:hidden">ZX9 <br /> SPEAKER</h3>
         <p className='font-normal opacity-80 w-72 md:w-80 xl:hidden'>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-        <Link href='/products/zx9-speaker' className='w-40 py-3 text-center bg-audiocolor-b2 md:mt-4 z-50 xl:hidden'>SEE PRODUCT</Link>
+        <Link href='/products/zx9-speaker' className='w-40 py-3 text-center bg-audiocolor-b2 md:mt-4 z-30 xl:hidden'>SEE PRODUCT</Link>
         <div className="hidden xl:flex lg:flex-col justify-between my-32 xl:gap-6 w-5/12">
           <h3 className="text-H1 font-semibold text-start">ZX9 <br /> SPEAKER</h3>
           <p className='font-normal opacity-80 w-80 text-start'>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>

@@ -4,7 +4,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const CategoryLinks = () => {
+const CategoryDropdown = () => {
 
     const categoryLinkNames = ['XX99 Mark I Headphones', 'ZX9 Speaker', 'YX1 Wireless Earphones']
     let MarkIPreview = '/../assets/product-xx99-mark-one-headphones/mobile/image-removebg-preview(41).svg'
@@ -20,8 +20,8 @@ const CategoryLinks = () => {
     }
     
   return (
-    <section className="w-full bg-audiocolor-w1 ">
-        <ul className='mb-10 md:mb-0 mx-6 flex flex-col md:flex-row md:gap-3 lg:gap-8 md:mt-20 md:mx-10 lg:mx-40 md:pb-6'>
+    <section className="w-full bg-audiocolor-w1 pt-6 pb-1 rounded-b-lg">
+        <ul className='mb-10 md:mb-0 mx-6 flex flex-col md:flex-row md:gap-3 lg:gap-8 md:mx-10 lg:mx-40 md:pb-6'>
         {organizedData().map((category) => (
             <li key={category.id} className="relative h-56 lg:h-72 flex flex-col justify-end items-center w-full">
                 <Image src={category.name === 'XX99 Mark I Headphones' ? MarkIPreview : category.name === 'ZX9 Speaker' ? ZX9Preview : YX1Preview} alt="" width='90' height='90' className={`${category.name === 'YX1 Wireless Earphones' && 'w-28 h-28'} absolute z-10 top-2 lg:top-8 xl:top-4 md:w-28 md:h-28 lg:h-32 lg:w-32 xl:w-40 xl:h-40`} />
@@ -39,4 +39,4 @@ const CategoryLinks = () => {
   )
 }
 
-export default CategoryLinks
+export default CategoryDropdown
