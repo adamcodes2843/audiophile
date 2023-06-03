@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Dropdown from './Dropdown'
 import Cart from './Cart'
 
-const NavProducts = () => {
+const Nav = () => {
     const [showCategories, setShowCategories] = useState<boolean>(false)
     const [showCart, setShowCart] = useState<boolean>(false)
 
@@ -32,7 +32,7 @@ const NavProducts = () => {
 
     return (
       <>
-      <nav className={`py-8 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-50 ${showCategories || showCart ? 'fixed' : 'absolute'} lg:absolute md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full bg-audiocolor-b2`}>
+      <nav className={`py-8 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-50 ${showCategories || showCart ? 'fixed bg-audiocolor-b1' : 'absolute'} md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full`}>
           <button type="button" onClick={() => categorySwitch()}>
           <FontAwesomeIcon icon={faBars} className='h-6 md:mr-10 lg:hidden' />
           </button>
@@ -48,12 +48,12 @@ const NavProducts = () => {
           </button>
       </nav>
       {
-        showCategories ? <Dropdown /> :
-        showCart ? <Cart /> : 
+        showCategories ? <Dropdown setShowCategories={setShowCategories} /> :
+        showCart ? <Cart setShowCart={setShowCart} /> : 
         ''
       }
       </>
     )
   }
 
-export default NavProducts
+export default Nav

@@ -1,10 +1,12 @@
+'use client'
+
 import data from '../data.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const CategoryDropdown = () => {
+const CategoryDropdown = ({setShowCategories}:any) => {
 
     const categoryLinkNames = ['XX99 Mark I Headphones', 'ZX9 Speaker', 'YX1 Wireless Earphones']
     let MarkIPreview = '/../assets/product-xx99-mark-one-headphones/mobile/image-removebg-preview(41).svg'
@@ -18,6 +20,10 @@ const CategoryDropdown = () => {
       let orderedData = neededData.concat(earphoneData)
       return orderedData
     }
+
+    let closeOut = () => {
+      setShowCategories(false)
+    }
     
   return (
     <section className="w-full bg-audiocolor-w1 pt-6 pb-1 rounded-b-lg">
@@ -28,7 +34,7 @@ const CategoryDropdown = () => {
                 <Image src={shadow} alt="" width='200' height='200' className="absolute z-10 top-16 lg:top-32"/>
                 <div className="bg-audiocolor-w3 h-40 lg:h-48 flex flex-col justify-end items-center w-full rounded-lg">
                   <h4 className="mb-1 font-bold lg:text-H6">{category.category.toUpperCase()}</h4>
-                  <Link href={`/categories/${category.category}`} className="mb-4 text-subtitle opacity-60 flex items-center gap-1 hover:text-audiocolor-oj2">
+                  <Link href={`/categories/${category.category}`} onClick={() => closeOut()}className="mb-4 text-subtitle opacity-60 flex items-center gap-1 hover:text-audiocolor-oj2">
                     SHOP <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3 text-audiocolor-oj2" />
                   </Link>
                 </div>

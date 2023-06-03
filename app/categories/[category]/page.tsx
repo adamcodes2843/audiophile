@@ -2,7 +2,6 @@ import Link from 'next/link'
 import CategoryLinks from '../../Components/CategoryLinks'
 import BestAudio from '../../Components/BestAudio'
 import data from '../../data.json'
-import NavCategories from '@/app/Components/NavCategories'
 
 export default function Category({params}: {
     params: { category: string}
@@ -10,12 +9,10 @@ export default function Category({params}: {
 
   let reversedData = data.slice().reverse()
   return (
-    <>
-    <NavCategories />
     <section className="bg-audiocolor-w1 max-w-[1440px] lg:mx-auto">
         { params.category === 'speakers' || params.category === 'headphones' || params.category === 'earphones' ?
             <>
-            <h1 className="mt-20 py-14 md:py-0 md:mt-0 h-24 md:h-[22rem] lg:h-[21rem] md:pt-20 flex justify-center items-center bg-audiocolor-b1 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
+            <h1 className="pb-10 md:pb-0 md:h-[22rem] lg:h-[21rem] pt-24 md:pt-20 flex justify-center items-center bg-audiocolor-b1 text-H4 md:text-H2 font-semibold text-audiocolor-w3">{params.category.toUpperCase()}</h1>
             <ul className='px-6 md:px-10 pt-16 md:pt-28 lg:px-40 lg:mt-16'>
             {reversedData.filter((cat) => cat.category == params.category).map((product)=> (
               <li key={product.name} className={`flex flex-col ${product.slug === 'xx99-mark-one-headphones' || product.slug === 'zx7-speaker' ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-20 xl:gap-32 items-center text-center justify-between mb-20 md:mb-32 lg:mb-20 xl:mb-32`}>
@@ -38,9 +35,7 @@ export default function Category({params}: {
             <BestAudio />
             </>
             : <h1 className="mt-40">Not a valid category</h1>
-        }
-        
+        }  
     </section>
-    </>
   )
 }
