@@ -1,8 +1,13 @@
 'use client'
 
-const Summary = () => {
+const Summary = ({setSubmitted}:any) => {
+
+  const handleFormSubmission = () => {
+    setSubmitted(true)
+  }
+  
   return (
-    <section className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-6 md:mt-8 xl:mt-6 rounded-lg flex flex-col justify-between mb-28 xl:mb-auto mx-6 md:mx-10 lg:mx-40 xl:ml-0 xl:mr-40 xl:w-1/3">
+    <fieldset className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-6 md:mt-8 xl:mt-6 rounded-lg flex flex-col justify-between mb-28 xl:mb-auto mx-6 md:mx-10 lg:mx-40 xl:ml-0 xl:mr-40 xl:w-1/3">
         <h2 className='text-H6 mb-10'>SUMMARY</h2>
         <ul>
 
@@ -25,8 +30,8 @@ const Summary = () => {
           <div className="text-H6 text-audiocolor-oj2">$5,446</div>
         </div>
         </div>
-        <button type="button" className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2">CONTINUE & PAY</button>
-    </section>
+        <button type="button" onClick={() => handleFormSubmission()} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2">CONTINUE & PAY</button>
+    </fieldset>
   )
 }
 

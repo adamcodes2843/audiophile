@@ -28,8 +28,6 @@ const Nav = () => {
       }
     }
 
-    console.log(showCategories)
-
     return (
       <>
       <nav className={`py-8 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-50 ${showCategories || showCart ? 'fixed bg-audiocolor-b1' : 'absolute'} md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full`}>

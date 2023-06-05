@@ -16,7 +16,8 @@ module.exports = {
         'b1': '#101010',
         'b2': '#000000',
         'g1': '#CFCFCF',
-        'g2': '#4C4C4C'
+        'g2': '#4C4C4C',
+        'r1': '#CD2C2C'
       },
     },
     fontSize: {

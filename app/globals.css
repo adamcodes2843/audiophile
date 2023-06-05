@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-input {
+    @apply w-full;
+    @apply h-10;
+    @apply border-[1px];
+    @apply p-6;
+    @apply rounded-lg;
+    @apply border-audiocolor-g1;
+}
+
+.form-input:hover {
+    @apply border-audiocolor-oj2;
+    @apply cursor-pointer;
+}
+
+.form-input:focus {
+    @apply outline-none;
+    @apply border-audiocolor-oj2
+}
