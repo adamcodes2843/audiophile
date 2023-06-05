@@ -2,7 +2,8 @@
 
 const Summary = ({setSubmitted}:any) => {
 
-  const handleFormSubmission = () => {
+  const handleSubmit = (e:any) => {
+    e.preventDefault()
     setSubmitted(true)
   }
   
@@ -30,7 +31,7 @@ const Summary = ({setSubmitted}:any) => {
           <div className="text-H6 text-audiocolor-oj2">$5,446</div>
         </div>
         </div>
-        <button type="button" onClick={() => handleFormSubmission()} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2">CONTINUE & PAY</button>
+        <button type="submit" onClick={(e) => handleSubmit(e)} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2">CONTINUE & PAY</button>
     </fieldset>
   )
 }

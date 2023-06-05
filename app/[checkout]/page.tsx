@@ -11,14 +11,14 @@ import ThankYou from './ThankYou'
 interface CustomerCheckout {
   name: string,
   email: string,
-  phone: number | null,
+  phone: number | undefined,
   address: string,
-  zip: number | null,
+  zip: number | undefined,
   city: string,
   country: string,
   payment: string,
-  eMoneyNum: number | null,
-  eMoneyPIN: number | null
+  eMoneyNum: number | undefined,
+  eMoneyPIN: number | undefined
 }
 
 const Checkout = () => {
@@ -26,17 +26,17 @@ const Checkout = () => {
   const [checkoutData, setCheckoutData] = useState<CustomerCheckout>({
     name: "",
     email: "",
-    phone: null,
+    phone: undefined,
     address: "",
-    zip: null,
+    zip: undefined,
     city: "",
     country: "",
     payment: "e-Money",
-    eMoneyNum: null,
-    eMoneyPIN: null
+    eMoneyNum: undefined,
+    eMoneyPIN: undefined
   })
 
-  console.log(submitted)
+  console.log(checkoutData)
 
   return (
     <div className=" bg-audiocolor-w3 mt-24 pt-4 md:pt-10 lg:pt-20 max-w-[1440px] xl:mx-auto ">
@@ -45,9 +45,9 @@ const Checkout = () => {
           <div className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-4 md:mt-6 rounded-lg mx-6 md:mx-10 lg:mx-40 xl:ml-40 xl:mr-0 xl:w-2/3 xl:mb-28">
           <h2 className='text-H4 font-semibold mb-10'>CHECKOUT</h2>
           <div className="flex flex-col">
-            <BillingDetails />
-            <ShippingInfo />
-            <PaymentDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData}/>
+            <BillingDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
+            <ShippingInfo checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
+            <PaymentDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
           </div>
           </div>
           <Summary setSubmitted={setSubmitted}/>
