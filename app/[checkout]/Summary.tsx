@@ -1,6 +1,6 @@
 'use client'
 
-const Summary = ({setSubmitted}:any) => {
+const Summary = ({setSubmitted, checkoutData, validName, validEmail, validPhone, validZip, validAddress, validCity, validCountry, validEMoneyNum, validEMoneyPIN, formDisabled}:any) => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
@@ -31,7 +31,7 @@ const Summary = ({setSubmitted}:any) => {
           <div className="text-H6 text-audiocolor-oj2">$5,446</div>
         </div>
         </div>
-        <button type="submit" onClick={(e) => handleSubmit(e)} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2">CONTINUE & PAY</button>
+        <button type="submit" disabled={formDisabled} onClick={(e) => handleSubmit(e)} className={`bg-audiocolor-oj2 ${formDisabled ? 'hover:bg-audiocolor-r1 hover:bg-opacity-80' : 'hover:bg-audiocolor-oj1'} text-audiocolor-w1 py-3 my-2`}>CONTINUE & PAY</button>
     </fieldset>
   )
 }

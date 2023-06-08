@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Summary from "./Summary"
 import Link from 'next/link'
 import BillingDetails from './BillingDetails'
@@ -11,32 +11,58 @@ import ThankYou from './ThankYou'
 interface CustomerCheckout {
   name: string,
   email: string,
-  phone: number | undefined,
+  phone: string,
   address: string,
-  zip: number | undefined,
+  zip: string,
   city: string,
   country: string,
   payment: string,
-  eMoneyNum: number | undefined,
-  eMoneyPIN: number | undefined
+  eMoneyNum: string,
+  eMoneyPIN: string
 }
 
 const Checkout = () => {
   const [submitted, setSubmitted] = useState<boolean>(false)
+  const [formDisabled, setFormDisabled] = useState<boolean>(true)
   const [checkoutData, setCheckoutData] = useState<CustomerCheckout>({
     name: "",
     email: "",
-    phone: undefined,
+    phone: '',
     address: "",
-    zip: undefined,
+    zip: '',
     city: "",
     country: "",
     payment: "e-Money",
-    eMoneyNum: undefined,
-    eMoneyPIN: undefined
+    eMoneyNum: '',
+    eMoneyPIN: ''
   })
 
-  console.log(checkoutData)
+  let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
+  let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
+  let validPhone = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/gm.test(checkoutData.phone)
+  let validZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(checkoutData.zip)
+  let validAddress = /(\d{1,}) [a-zA-Z0-9\s]+/g.test(checkoutData.address)
+  let validCity = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]+$/.test(checkoutData.city)
+  let validCountry = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]+$/.test(checkoutData.country)
+  let validEMoneyNum = /(^\d{9}$)/gm.test(checkoutData.eMoneyNum)
+  let validEMoneyPIN = /(^\d{4}$)/gm.test(checkoutData.eMoneyPIN)
+
+  useEffect(() => {
+    if (checkoutData.payment === 'e-Money' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && validEMoneyNum && validEMoneyPIN) {
+      setFormDisabled(false)
+    }
+    else if (checkoutData.payment === 'cash-on-delivery' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry) {
+      setFormDisabled(false)
+    }
+    else if (checkoutData.payment === 'e-Money' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry || !validEMoneyNum || !validEMoneyPIN) {
+      setFormDisabled(true)
+    }
+    else if (checkoutData.payment === 'cash-on-delivery' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry) {
+      setFormDisabled(true)
+    }
+  }, [checkoutData])
+  
+    
 
   return (
     <div className=" bg-audiocolor-w3 mt-24 pt-4 md:pt-10 lg:pt-20 max-w-[1440px] xl:mx-auto ">
@@ -45,12 +71,12 @@ const Checkout = () => {
           <div className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-4 md:mt-6 rounded-lg mx-6 md:mx-10 lg:mx-40 xl:ml-40 xl:mr-0 xl:w-2/3 xl:mb-28">
           <h2 className='text-H4 font-semibold mb-10'>CHECKOUT</h2>
           <div className="flex flex-col">
-            <BillingDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
-            <ShippingInfo checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
-            <PaymentDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} />
+            <BillingDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} validName={validName} validEmail={validEmail} validPhone={validPhone} />
+            <ShippingInfo checkoutData={checkoutData} setCheckoutData={setCheckoutData} validAddress={validAddress} validZip={validZip} validCity={validCity} validCountry={validCountry} />
+            <PaymentDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} validEMoneyNum={validEMoneyNum} validEMoneyPIN={validEMoneyPIN} />
           </div>
           </div>
-          <Summary setSubmitted={setSubmitted}/>
+          <Summary checkoutData={checkoutData} setSubmitted={setSubmitted} validName={validName} validEmail={validEmail} validPhone={validPhone} validAddress={validAddress} validZip={validZip} validCity={validCity} validCountry={validCountry} validEMoneyNum={validEMoneyNum} validEMoneyPIN={validEMoneyPIN} formDisabled={formDisabled} setFormDisabled={setFormDisabled} />
         </form>
         {submitted && <ThankYou setSubmitted={setSubmitted}/>}
     </div>

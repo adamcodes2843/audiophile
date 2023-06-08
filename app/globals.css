@@ -5,10 +5,9 @@
 .form-input {
     @apply w-full;
     @apply h-10;
-    @apply border-[1px];
     @apply p-6;
+    @apply border-[1px];
     @apply rounded-lg;
-    @apply border-audiocolor-g1;
 }
 
 .form-input:hover {
