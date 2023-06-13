@@ -37,6 +37,8 @@ const Checkout = () => {
     eMoneyPIN: ''
   })
 
+  console.log(checkoutData)
+
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
   let validPhone = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/gm.test(checkoutData.phone)
@@ -62,12 +64,15 @@ const Checkout = () => {
     }
   }, [checkoutData])
   
-    
+  const handleSubmit = (e:any) => {
+    e.preventDefault()
+    setSubmitted(true)
+  }
 
   return (
-    <div className=" bg-audiocolor-w3 mt-24 pt-4 md:pt-10 lg:pt-20 max-w-[1440px] xl:mx-auto ">
-        <Link href={'/'} className="ml-6 md:ml-10 lg:ml-40 font-thin">Go Back</Link>
-        <form className="xl:flex xl:gap-8">
+    <div className=" bg-audiocolor-w3 mt-24 pt-4 md:pt-10 lg:pt-20 xl:w-full xl:max-w-[1440px] xl:mx-auto">
+        <Link href={'/'} className="ml-6 md:ml-10 lg:ml-40 font-thin hover:text-audiocolor-oj2">Go Back</Link>
+        <form onSubmit={(e) => handleSubmit(e)} className="xl:flex xl:gap-8">
           <div className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-4 md:mt-6 rounded-lg mx-6 md:mx-10 lg:mx-40 xl:ml-40 xl:mr-0 xl:w-2/3 xl:mb-28">
           <h2 className='text-H4 font-semibold mb-10'>CHECKOUT</h2>
           <div className="flex flex-col">

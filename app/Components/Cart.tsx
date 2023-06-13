@@ -1,8 +1,36 @@
 'use client'
-import Link from 'next/link'
-const Cart = ({setShowCart}:any) => {
 
-    let closeOut = () => {
+import Link from 'next/link'
+import {useEffect, useState} from 'react'
+
+/*async function getCartItems() {
+    const res = await fetch(`/api/getCartItems`)
+    if (!res.ok) {
+        console.log(res)
+    }
+    return res.json()
+}
+*/
+
+const Cart = ({setShowCart}:any) => {
+    const [cartItems, setCartItems] = useState<any>()
+
+    useEffect(() => {
+        fetch('/api/getCartItems')
+        .then(response => {
+            if(!response.ok) {
+                throw Error('could not fetch the data for theat resource')
+            }
+            return response.json()
+        })
+        .then(data => {
+            setCartItems(data)
+        })
+    }, [])
+    
+    console.log(cartItems)
+
+    let toCheckout = () => {
         setShowCart(false)
     }
     let removeAll = () => {
@@ -15,12 +43,16 @@ const Cart = ({setShowCart}:any) => {
             <h6 className="text-H6">{'CART (3)'}</h6>
             <button type="button" onClick={() => removeAll()}>Remove all</button>
             </div>
-            <ul></ul>
             <div className="flex flex-row justify-between">
+                <ul>
+                    {cartItems ? cartItems.map((item:any )=> (
+                        <li key={item.id}>{item.product}</li>
+                    )) : 'no items'}
+                </ul>
                 <p>TOTAL</p>
                 <h6 className="text-H6">$5,446</h6>
             </div>
-            <Link href='/checkout' onClick={() => closeOut()} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2 text-center">CHECKOUT</Link>
+            <Link href='/checkout' onClick={() => toCheckout()} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2 text-center">CHECKOUT</Link>
         </div>
     </div>
   )

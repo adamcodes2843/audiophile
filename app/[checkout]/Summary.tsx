@@ -1,11 +1,6 @@
 'use client'
 
 const Summary = ({setSubmitted, checkoutData, validName, validEmail, validPhone, validZip, validAddress, validCity, validCountry, validEMoneyNum, validEMoneyPIN, formDisabled}:any) => {
-
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
   
   return (
     <fieldset className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-6 md:mt-8 xl:mt-6 rounded-lg flex flex-col justify-between mb-28 xl:mb-auto mx-6 md:mx-10 lg:mx-40 xl:ml-0 xl:mr-40 xl:w-1/3">
@@ -31,7 +26,7 @@ const Summary = ({setSubmitted, checkoutData, validName, validEmail, validPhone,
           <div className="text-H6 text-audiocolor-oj2">$5,446</div>
         </div>
         </div>
-        <button type="submit" disabled={formDisabled} onClick={(e) => handleSubmit(e)} className={`bg-audiocolor-oj2 ${formDisabled ? 'hover:bg-audiocolor-r1 hover:bg-opacity-80' : 'hover:bg-audiocolor-oj1'} text-audiocolor-w1 py-3 my-2`}>CONTINUE & PAY</button>
+        <button type="submit" disabled={formDisabled} className={`bg-audiocolor-oj2 ${formDisabled ? 'hover:bg-audiocolor-r1 hover:bg-opacity-80' : 'hover:bg-audiocolor-oj1'} text-audiocolor-w1 py-3 my-2`}>CONTINUE & PAY</button>
     </fieldset>
   )
 }
