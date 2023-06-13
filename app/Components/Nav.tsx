@@ -1,8 +1,8 @@
 'use client'
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import Dropdown from './Dropdown'
 import Cart from './Cart'
@@ -10,6 +10,7 @@ import Cart from './Cart'
 const Nav = () => {
     const [showCategories, setShowCategories] = useState<boolean>(false)
     const [showCart, setShowCart] = useState<boolean>(false)
+    const [cartItems, setCartItems] = useState<any>()
 
     const categorySwitch = () => {
       if (!showCategories) {
@@ -27,6 +28,19 @@ const Nav = () => {
         setShowCart(false)
       }
     }
+
+    useEffect(() => {
+      fetch('/api/getCartItems')
+      .then(response => {
+          if(!response.ok) {
+              throw Error('could not fetch the data for theat resource')
+          }
+          return response.json()
+      })
+      .then(data => {
+          setCartItems(data)
+      })
+    }, [])
 
     return (
       <>
@@ -47,7 +61,7 @@ const Nav = () => {
       </nav>
       {
         showCategories ? <Dropdown setShowCategories={setShowCategories} /> :
-        showCart ? <Cart setShowCart={setShowCart} /> : 
+        showCart ? <Cart setShowCart={setShowCart} setCartItems={setCartItems} cartItems={cartItems} /> : 
         ''
       }
       </>

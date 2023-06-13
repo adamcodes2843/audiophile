@@ -6,7 +6,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try  {
-    const data = await prisma.product.findMany()
+    const data = await prisma.product.findMany({
+      where: {
+        purchased: false,
+      },
+    })
     return res.status(200).json(data)
   } catch (error) {
     return res.status(500).json(error)
