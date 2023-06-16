@@ -49,7 +49,6 @@ const Checkout = () => {
 
   console.log(checkoutData)
   console.log(summaryItems)
-  console.log(expandList)
 
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)

@@ -9,9 +9,9 @@ const HeaderFigure = () => {
         <img src={mobileTitleImage} alt="" className="w-full h-full z-0 md:hidden" />
         <img src={tabletTitleImage} alt="" className="w-full h-full z-0 hidden md:block lg:hidden" />
         <img src={desktopTitleImage} alt="" className="w-full max-w-[1440px] h-full z-0 hidden lg:block lg:mx-auto" />
-        <figcaption className='absolute mx-12 flex flex-col gap-6 mt-20 lg:items-start lg:left-0 lg:right-0 lg:w-5/6 lg:mx-auto max-w-[1080px]'>
+        <figcaption className='absolute mx-12 flex flex-col gap-6 mt-20 lg:items-start lg:left-0 lg:right-0 lg:mx-auto lg:ml-40'>
         <h2 className="text-overline opacity-50">NEW PRODUCT</h2>
-        <h1 className="text-H3 md:text-H1">XX99 MARK II <br /> HEADPHONES</h1>
+        <h1 className="text-H3 md:text-H1 lg:text-H2 xl:text-H1">XX99 MARK II <br /> HEADPHONES</h1>
         <p className="opacity-70 md:mx-auto max-w-lg md:w-[23rem] lg:text-start lg:ml-0">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
         <Link href="/products/xx99-mark-two-headphones" className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 mx-auto lg:ml-0 py-3 px-8">SEE PRODUCT</Link>
         </figcaption>
