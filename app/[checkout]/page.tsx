@@ -18,12 +18,18 @@ interface CustomerCheckout {
   country: string,
   payment: string,
   eMoneyNum: string,
-  eMoneyPIN: string
+  eMoneyPIN: string,
+  total: number | string,
+  shipping: number | string,
+  vat: number | string
+  grandTotal: number | string
 }
 
 const Checkout = () => {
   const [submitted, setSubmitted] = useState<boolean>(false)
+  const [expandList, setExpandList] = useState<boolean>(false)
   const [formDisabled, setFormDisabled] = useState<boolean>(true)
+  const [summaryItems, setSummaryItems] = useState<any>()
   const [checkoutData, setCheckoutData] = useState<CustomerCheckout>({
     name: "",
     email: "",
@@ -34,10 +40,16 @@ const Checkout = () => {
     country: "",
     payment: "e-Money",
     eMoneyNum: '',
-    eMoneyPIN: ''
+    eMoneyPIN: '',
+    total: '',
+    shipping: '',
+    vat: '',
+    grandTotal: ''
   })
 
   console.log(checkoutData)
+  console.log(summaryItems)
+  console.log(expandList)
 
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
@@ -63,6 +75,31 @@ const Checkout = () => {
       setFormDisabled(true)
     }
   }, [checkoutData])
+
+  useEffect(()=> {
+    fetch('/api/getCartItems')
+    .then(response => {
+        if(!response.ok) {
+            throw Error('could not fetch the data for theat resource')
+        }
+        return response.json()
+    })
+    .then(data => {
+        setSummaryItems(data)
+        setCheckoutData({...checkoutData, 
+          shipping:50, 
+          total: data.reduce((total:number, curr:any) => {
+            return total + (curr.price * curr.quantity)
+            }, 0),
+          vat: Math.floor(data.reduce((total:number, curr:any) => {
+            return total + (curr.price * curr.quantity)
+            }, 0) * 0.2),
+          grandTotal: data.reduce((total:number, curr:any) => {
+            return total + (curr.price * curr.quantity)
+            }, 0) + 50
+          })
+    })
+  }, [])
   
   const handleSubmit = (e:any) => {
     e.preventDefault()
@@ -81,9 +118,9 @@ const Checkout = () => {
             <PaymentDetails checkoutData={checkoutData} setCheckoutData={setCheckoutData} validEMoneyNum={validEMoneyNum} validEMoneyPIN={validEMoneyPIN} />
           </div>
           </div>
-          <Summary checkoutData={checkoutData} setSubmitted={setSubmitted} validName={validName} validEmail={validEmail} validPhone={validPhone} validAddress={validAddress} validZip={validZip} validCity={validCity} validCountry={validCountry} validEMoneyNum={validEMoneyNum} validEMoneyPIN={validEMoneyPIN} formDisabled={formDisabled} setFormDisabled={setFormDisabled} />
+          <Summary summaryItems={summaryItems} formDisabled={formDisabled} setFormDisabled={setFormDisabled} checkoutData={checkoutData} />
         </form>
-        {submitted && <ThankYou setSubmitted={setSubmitted}/>}
+        {submitted && <ThankYou summaryItems={summaryItems} setSubmitted={setSubmitted} checkoutData={checkoutData} expandList={expandList} setExpandList={setExpandList} />}
     </div>
   )
 }

@@ -10,19 +10,7 @@ function Product({params}: {
   let productInfo:any = data.filter((prod) => prod.slug == params.product)
   
   let productSrcImage = '/../.' + productInfo[0].image.mobile
-  let priceString = productInfo[0].price.toString()
   
-  const priceToString = () => {
-    let priceArray =  priceString.split('')
-    if (priceArray.length > 3){
-      priceArray.splice(1,0,',')
-      let x = priceArray.join('')
-      let commaNum = x.toString()
-      return commaNum
-    } else {
-      return priceString
-    }
-  }
 
   let paragraphs = productInfo[0].features.split('\n').filter((z:any)=> z != '')
   
@@ -39,7 +27,7 @@ function Product({params}: {
         <h2 className="text-H3 lg:text-H2 md:text-H4 mt-6 md:mt-3">{productInfo[0].name.split(' ').slice(0, productInfo[0].name.split(' ').length - 1).join(' ')}</h2>
         <h2 className="text-H3 lg:text-H2 mb-6 md:text-H4">{productInfo[0].name.split(' ').slice(productInfo[0].name.split(' ').length-1,).join() }</h2>
         <p className="font-normal opacity-70 mt-6 md:mt-2 md:mb-2">{productInfo[0].description}</p>
-        <p className="text-H6 mt-6">$ {priceToString()}</p>
+        <p className="text-H6 mt-6">$ {productInfo[0].price.toLocaleString()}</p>
         <AddToCart />
         </div>
         </div>
