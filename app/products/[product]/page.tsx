@@ -8,7 +8,7 @@ function Product({params}: {
     params: { product: string}
 }) {
   let productInfo:any = data.filter((prod) => prod.slug == params.product)
-  
+  let productData = productInfo[0]
   let productSrcImage = '/../.' + productInfo[0].image.mobile
   
 
@@ -28,7 +28,7 @@ function Product({params}: {
         <h2 className="text-H3 lg:text-H2 mb-6 md:text-H4">{productInfo[0].name.split(' ').slice(productInfo[0].name.split(' ').length-1,).join() }</h2>
         <p className="font-normal opacity-70 mt-6 md:mt-2 md:mb-2">{productInfo[0].description}</p>
         <p className="text-H6 mt-6">$ {productInfo[0].price.toLocaleString()}</p>
-        <AddToCart />
+        <AddToCart params={params} productData={productData} />
         </div>
         </div>
         <div className='xl:flex xl:mx-40 xl:justify-between xl:mt-32 xl:mb-12'>

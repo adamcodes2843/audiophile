@@ -1,8 +1,6 @@
 'use client'
 import Link from 'next/link'
 const Cart = ({setShowCart, cartItems}:any) => {
-    
-    console.log(cartItems)
 
     let toCheckout = () => {
         setShowCart(false)
@@ -12,19 +10,24 @@ const Cart = ({setShowCart, cartItems}:any) => {
     }
 
   return (
-    <div className="fixed z-40 w-full mt-24 h-full bg-audiocolor-b2 bg-opacity-30 overflow-hidden max-w-[1440px] mx-auto left-0 right-0">
-        <div className="z-50 flex flex-col md:w-1/2 md:max-w-xl justify-between bg-audiocolor-w1 mx-6 md:ml-auto md:mr-10 lg:mr-40 lg:ml-auto mt-6 p-6 rounded-lg gap-3">
+    <div className="fixed z-40 w-full mt-24 h-full bg-audiocolor-b2 bg-opacity-30 overflow-hidden max-w-[1440px] mx-auto left-0 right-0 pl-6">
+        <div className="z-50 flex flex-col max-w-md md:w-1/2 justify-between bg-audiocolor-w1 mx-6 ml-auto md:mr-10 lg:mr-40 lg:ml-auto mt-6 p-6 rounded-lg">
             <div className="flex flex-row justify-between">
             <h6 className="text-H6">{`CART (${cartItems && cartItems.length})`}</h6>
             <button type="button" onClick={() => removeAll()} className="opacity-50 underline hover:text-audiocolor-oj2 hover:opacity-100">Remove all</button>
             </div>
-            <ul className="flex flex-col gap-4 my-4">
+            <ul className="flex flex-col gap-6 my-6">
                 {cartItems ? cartItems.map((item:any )=> (
-                    <li key={item.id} className="flex">
-                        <img src={`/../.${item.cartImage}`} alt={item.product} width={70} height={70} className="rounded-xl mr-6" />
+                    <li key={item.id} className="flex items-center">
+                        <img src={`/../.${item.cartImage}`} alt={item.product} width={70} height={70} className="rounded-xl mr-4 md:mr-6 w-16 h-16 md:w-20 md:h-20" />
                         <div className="flex flex-col justify-center">
                             <p className="font-bold">{item.product}</p>
                             <p className="opacity-50">${item.price.toLocaleString()}</p>
+                        </div>
+                        <div className="bg-audiocolor-w3 h-8 lg:h-10 text-subtitle flex items-center gap-4 lg:gap-6 px-4 lg:px-6 ml-auto">
+                            <button type="button" className="opacity-25 hover:opacity-100 hover:text-audiocolor-oj2 hover:font-bold">-</button>
+                            <p>{item.quantity}</p>
+                            <button type="button" className="opacity-25 hover:opacity-100 hover:text-audiocolor-oj2 hover:font-bold">+</button>
                         </div>
                     </li>
                     )) : 'no items'}

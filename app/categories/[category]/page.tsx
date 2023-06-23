@@ -25,8 +25,8 @@ export default function Category({params}: {
                 }
                 <h2 className="text-H4 md:text-H2">{product.name.split(' ').slice(0, product.name.split(' ').length - 1).join(' ')}</h2>
                 <h2 className="text-H4 mb-6 lg:mb-3 md:text-H2">{product.name.split(' ').slice(product.name.split(' ').length-1,).join() }</h2>
-                <p className="font-normal opacity-60 mb-6 md:mb-10 lg:mb-6 md:mx-20 lg:mx-0 md:mt-6 lg:mt-3 lg:text-start">{product.description}</p>
-                <Link href={`/products/${product.slug}`} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 font-normal py-4 px-8 text-subtitle mb-6">SEE PRODUCT</Link>
+                <p className="font-normal opacity-60 mb-10 md:mb-10 lg:mb-6 md:mx-20 lg:mx-0 md:mt-6 lg:mt-3 lg:text-start">{product.description}</p>
+                <Link href={`/products/${product.slug}`} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-4 px-8 mb-6">SEE PRODUCT</Link>
                 </div>
               </li>
             ))}

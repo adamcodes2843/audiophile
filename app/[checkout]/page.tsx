@@ -47,9 +47,6 @@ const Checkout = () => {
     grandTotal: ''
   })
 
-  console.log(checkoutData)
-  console.log(summaryItems)
-
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
   let validPhone = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/gm.test(checkoutData.phone)
