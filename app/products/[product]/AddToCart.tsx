@@ -47,12 +47,11 @@ const AddToCart = ({params, productData}:any) => {
   const handleClick = async (data: ItemPost) => {
     try {
       addItem(data)
+      window.location.reload()
     } catch (error) {
       console.log(error);
     }
   }
-
-console.log(item)
 
   return (
     <div className="flex w-fill gap-4 mt-8 h-12">
@@ -61,7 +60,7 @@ console.log(item)
             <div>{item.quantity}</div>
             <button type='button' disabled={item.quantity >= 10} onClick={() => setItem({...item, quantity: item.quantity + 1})} className={`opacity-30 ${item.quantity < 10 && 'hover:opacity-100 hover:text-audiocolor-oj2'}`}>+</button>
         </div>
-        <button onClick={() => handleClick(item)} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 px-8">ADD TO CART</button>
+        <button  onClick={() => handleClick(item)} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 px-8 flex items-center">ADD TO CART</button>
     </div>
   )
 }

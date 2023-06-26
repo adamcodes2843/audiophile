@@ -42,9 +42,15 @@ const Nav = () => {
       })
     }, [])
 
+    useEffect(() => {
+      if (cartItems && cartItems.length >= 1){
+        setShowCart(true)
+      }
+    }, [cartItems])
+
     return (
       <>
-      <nav className={`py-8 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-50 ${showCategories || showCart ? 'fixed bg-audiocolor-b1' : 'absolute'} lg:bg-opacity-0 lg:absolute  md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full`}>
+      <nav className={`py-8 px-8 md:px-10 lg:px-40 flex justify-between md:justify-start items-center text-audiocolor-w1 w-full z-50 ${showCategories || showCart ? 'fixed bg-audiocolor-b1' : 'absolute'} md:left-0 md:right-0 lg:mx-auto max-w-[1440px] md:mx-auto xl:w-full`}>
           <button type="button" onClick={() => categorySwitch()}>
           <FontAwesomeIcon icon={faBars} className='h-6 md:mr-10 lg:hidden' />
           </button>
@@ -55,8 +61,9 @@ const Nav = () => {
             <Link href='/categories/speakers' className="hover:text-audiocolor-oj2">SPEAKERS</Link>
             <Link href='/categories/earphones' className="hover:text-audiocolor-oj2">EARPHONES</Link>
           </ul>
-          <button type="button" className="md:ml-auto" onClick={() => cartSwitch()}>
+          <button type="button" className="md:ml-auto relative" onClick={() => cartSwitch()}>
           <img src={'/../assets/cart/CombinedShape.svg'} alt="cart" />
+          {cartItems && cartItems.length > 0 && <div className="absolute bottom-3 left-[0.6rem] text-audiocolor-oj2">{cartItems.length}</div>}
           </button>
       </nav>
       {

@@ -24,7 +24,7 @@ const HomeProductCards = () => {
         <div className="hidden xl:flex lg:flex-col justify-between my-32 xl:gap-6 w-5/12">
           <h3 className="text-H1 font-semibold text-start">ZX9 <br /> SPEAKER</h3>
           <p className='font-normal opacity-80 w-80 text-start'>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-          <Link href='/products/zx9-speaker' className='w-40 py-3 text-center bg-audiocolor-b2 hover:bg-audiocolor-g2 md:mt-4 z-50'>SEE PRODUCT</Link>
+          <Link href='/products/zx9-speaker' className='w-40 py-3 text-center bg-audiocolor-b2 hover:bg-audiocolor-g2 md:mt-4 z-30'>SEE PRODUCT</Link>
         </div>
         <div className="absolute border-[1px] w-[20rem] h-[20rem] md:w-[34rem] md:h-[34rem] rounded-full md:bottom-[17rem] bottom-[19.2rem]  opacity-30 xl:top-40 xl:left-8" />
         <div className="absolute border-[1px] w-[17.5rem] h-[17.5rem] md:w-[30rem] md:h-[30rem] rounded-full bottom-[20.5rem] md:bottom-[19rem] opacity-30 xl:top-48 xl:left-16" />

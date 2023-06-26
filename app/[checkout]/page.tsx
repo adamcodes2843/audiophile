@@ -56,6 +56,7 @@ const Checkout = () => {
   let validCountry = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]+$/.test(checkoutData.country)
   let validEMoneyNum = /(^\d{9}$)/gm.test(checkoutData.eMoneyNum)
   let validEMoneyPIN = /(^\d{4}$)/gm.test(checkoutData.eMoneyPIN)
+  console.log(summaryItems)
 
   useEffect(() => {
     if (checkoutData.payment === 'e-Money' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && validEMoneyNum && validEMoneyPIN) {
