@@ -10,6 +10,7 @@ datasource db {
 model Product {
   id Int @id @default(autoincrement())
   product String
+  slug String
   cartImage String
   price Int
   category String
@@ -32,10 +33,10 @@ model Checkout {
   eMoneyNum     String?
   eMoneyPIN     String?
   products  Product[]
-  total Int?
+  total Int
   shipping Int @default(50)
-  vat Int?
-  grandTotal Int?
+  vat Int
+  grandTotal Int
   orderSubmitted Boolean @default(false)
-  timeSubmitted DateTime?
+  timeSubmitted DateTime @default(now())
 }

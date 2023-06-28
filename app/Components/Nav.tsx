@@ -33,7 +33,7 @@ const Nav = () => {
       fetch('/api/getCartItems')
       .then(response => {
           if(!response.ok) {
-              throw Error('could not fetch the data for theat resource')
+              throw Error('could not fetch the data for that resource')
           }
           return response.json()
       })
@@ -63,7 +63,7 @@ const Nav = () => {
           </ul>
           <button type="button" className="md:ml-auto relative" onClick={() => cartSwitch()}>
           <img src={'/../assets/cart/CombinedShape.svg'} alt="cart" />
-          {cartItems && cartItems.length > 0 && <div className="absolute bottom-3 left-[0.6rem] text-audiocolor-oj2">{cartItems.length}</div>}
+          {cartItems && cartItems.length > 0 && <div className="absolute bottom-3 left-[0.65rem] text-audiocolor-oj2">{cartItems.length}</div>}
           </button>
       </nav>
       {

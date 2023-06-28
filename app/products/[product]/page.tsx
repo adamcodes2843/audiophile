@@ -9,10 +9,8 @@ function Product({params}: {
 }) {
   let productInfo:any = data.filter((prod) => prod.slug == params.product)
   let productData = productInfo[0]
-  let productSrcImage = '/../.' + productInfo[0].image.mobile
-  
-
   let paragraphs = productInfo[0].features.split('\n').filter((z:any)=> z != '')
+  
   
   
   return (

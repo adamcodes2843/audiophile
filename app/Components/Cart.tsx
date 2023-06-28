@@ -11,6 +11,7 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
     let incrementQuantity = (id:number) => {
         const increasedQuantity = cartItems.map((product:any) => {
             if(product.id === id && product.quantity < 9) {
+                incrementProduct(String(id))
                 return {...product, quantity: product.quantity + 1}
             }
             return product
@@ -21,21 +22,47 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
     let decrementQuantity = (id:number) => {
         const decreasedQuantity = cartItems.map((product:any) => {
             if(product.id === id && product.quantity > 1) {
+                decrementProduct(String(id))
                 return({...product, quantity: product.quantity - 1})
             }
             if(product.id === id && product.quantity <= 1){
                 deleteProduct(String(id))
-                //return({...product, quantity:  product.quantity === 0})
-                window.location.reload()  //change
+                window.location.reload()
             }
             return product
         })
         setCartItems(decreasedQuantity)
     }
     
+    async function incrementProduct(id:string) {
+        try {
+            fetch(`/api/increment/${id}`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                method: 'PATCH'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function decrementProduct(id:string) {
+        try {
+            fetch(`/api/decrement/${id}`, {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                method: 'PATCH'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
     async function deleteProduct(id:string) {
         try {
-            fetch(`/api/product/${id}`, {
+            fetch(`/api/delete/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -58,7 +85,7 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
             console.log(error)
         }
     }
-console.log(cartItems)
+
   return (
     <div className="fixed z-40 w-full mt-24 h-full bg-audiocolor-b2 bg-opacity-30 overflow-hidden max-w-[1440px] mx-auto left-0 right-0 pl-6">
         <div className="z-50 flex flex-col max-w-md md:w-1/2 justify-between bg-audiocolor-w1 mx-6 ml-auto md:mr-10 lg:mr-40 lg:ml-auto mt-6 p-6 rounded-lg">

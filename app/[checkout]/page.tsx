@@ -57,6 +57,7 @@ const Checkout = () => {
   let validEMoneyNum = /(^\d{9}$)/gm.test(checkoutData.eMoneyNum)
   let validEMoneyPIN = /(^\d{4}$)/gm.test(checkoutData.eMoneyPIN)
   console.log(summaryItems)
+  console.log(checkoutData)
 
   useEffect(() => {
     if (checkoutData.payment === 'e-Money' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && validEMoneyNum && validEMoneyPIN) {
@@ -98,15 +99,30 @@ const Checkout = () => {
     })
   }, [])
   
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e:any, data: CustomerCheckout) => {
     e.preventDefault()
+    addCustomerRecord(data)
     setSubmitted(true)
+  }
+
+  async function addCustomerRecord(data: CustomerCheckout){
+    try{
+      fetch('/api/createCustomerRecord', {
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <div className=" bg-audiocolor-w3 mt-24 pt-4 md:pt-10 lg:pt-20 xl:w-full xl:max-w-[1440px] xl:mx-auto">
         <Link href={'/'} className="ml-6 md:ml-10 lg:ml-40 font-thin hover:text-audiocolor-oj2">Go Back</Link>
-        <form onSubmit={(e) => handleSubmit(e)} className="xl:flex xl:gap-8">
+        <form onSubmit={(e) => handleSubmit(e, checkoutData)} className="xl:flex xl:gap-8">
           <div className="bg-audiocolor-w1 p-6 md:px-8 lg:px-12 lg:pt-12 mt-4 md:mt-6 rounded-lg mx-6 md:mx-10 lg:mx-40 xl:ml-40 xl:mr-0 xl:w-2/3 xl:mb-28">
           <h2 className='text-H4 font-semibold mb-10'>CHECKOUT</h2>
           <div className="flex flex-col">

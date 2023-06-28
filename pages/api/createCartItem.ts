@@ -5,11 +5,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const {product, cartImage, price, category, quantity} = req.body
+    const {product, cartImage, price, category, quantity, slug} = req.body
       try {
         await prisma.product.create({
           data: {
             product,
+            slug,
             cartImage,
             price,
             category,
