@@ -78,7 +78,7 @@ const Checkout = () => {
   }, [checkoutData])
 
   useEffect(()=> {
-    fetch('/api/getCartItems')
+    fetch(`${process.env.BASE_URL}/api/getCartItems`)
     .then(response => {
         if(!response.ok) {
             throw Error('could not fetch the data for theat resource')
@@ -116,7 +116,7 @@ const Checkout = () => {
 
   async function addCustomerRecord(data: CustomerCheckout){
     try{
-      fetch('/api/createCustomerRecord', {
+      fetch(`${process.env.BASE_URL}/api/createCustomerRecord`, {
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -130,7 +130,7 @@ const Checkout = () => {
 
   async function updatePurchasedProducts(){
     try{
-      fetch('/api/updatePurchasedProducts', {
+      fetch(`${process.env.BASE_URL}/api/updatePurchasedProducts`, {
         headers: {
           'Content-Type': 'application/json'
         },

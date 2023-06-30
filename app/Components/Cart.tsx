@@ -40,7 +40,7 @@ const Cart = () => {
     
     async function incrementProduct(id:string) {
         try {
-            fetch(`/api/increment/${id}`, {
+            fetch(`${process.env.BASE_URL}/api/increment/${id}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -53,7 +53,7 @@ const Cart = () => {
 
     async function decrementProduct(id:string) {
         try {
-            fetch(`/api/decrement/${id}`, {
+            fetch(`${process.env.BASE_URL}/api/decrement/${id}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -66,7 +66,7 @@ const Cart = () => {
     
     async function deleteProduct(id:string) {
         try {
-            fetch(`/api/delete/${id}`, {
+            fetch(`${process.env.BASE_URL}/api/delete/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -79,7 +79,7 @@ const Cart = () => {
 
     async function removeAllItems() {
         try{
-            fetch('/api/removeAll', {
+            fetch(`${process.env.BASE_URL}/api/removeAll`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
