@@ -1,13 +1,17 @@
 'use client'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { AppContext } from '@/app/Components/Context-Provider'
 
 interface ItemPost {
   product: string,
   cartImage: string,
   price: number,
   category: string,
-  quantity: number
-  slug: string
+  quantity: number,
+  slug: string,
+  purchased: boolean,
+  checkoutId: null,
+  id: number
 }
 
 const AddToCart = ({params, productData}:any) => {
@@ -18,9 +22,12 @@ const AddToCart = ({params, productData}:any) => {
     price: productData.price,
     category: productData.category,
     quantity: 1,
+    purchased: false,
+    checkoutId: null,
+    id: Math.floor(Math.random() * 100000000)
   })
-  const [itemInCart, setItemInCart] = useState<boolean>(false)
   const [cartItemId, setCartItemId] = useState<number | undefined>()
+  const {setCartItems, cartItems, setShowCart, itemInCart, setItemInCart}:any = useContext(AppContext)
 
   useEffect(() => {
     if (params.product === 'xx99-mark-two-headphones'){
@@ -54,7 +61,7 @@ const AddToCart = ({params, productData}:any) => {
         setItemInCart(false)
       }
     })
-  }, [])
+  }, [cartItems])
 
   async function addItem(data: ItemPost) {
     try {
@@ -73,7 +80,9 @@ const AddToCart = ({params, productData}:any) => {
   const handleAddItem = async (data: ItemPost) => {
     try {
       addItem(data)
-      window.location.reload()
+      setCartItems([...cartItems, item])
+      setItem({...item, quantity: 1})
+      setShowCart(true)
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +91,15 @@ const AddToCart = ({params, productData}:any) => {
   const handleUpdateItem = async (id:number | undefined, quan:number) => {
     try {
       updateProduct(String(id), String(quan))
-      window.location.reload()
+      let updatedCartItems = cartItems.map((product:any) => {
+        if(product.slug === item.slug) {
+          return{...product, quantity: item.quantity}
+        }
+        return product
+      })
+      setCartItems(updatedCartItems)
+      setItem({...item, quantity: 1})
+      setShowCart(true)
     } catch (error) {
       console.log(error)
     }

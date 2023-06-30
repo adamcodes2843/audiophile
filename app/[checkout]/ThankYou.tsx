@@ -3,15 +3,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const ThankYou = ({setSubmitted, summaryItems, checkoutData, expandList, setExpandList}:any) => {
+const ThankYou = ({setSubmitted, summaryItems, checkoutData, expandList, setExpandList, setCartItems}:any) => {
 
   let checkmark = '/../assets/checkout/icon-order-confirmation.svg'
 
   let returnHome = () => {
     setSubmitted(false)
+    setCartItems([])
   }
 
-  console.log(expandList)
   return (
     <div className="fixed z-40 w-full h-full bg-audiocolor-b2 bg-opacity-30 overflow-hidden max-w-[1440px] mx-auto left-0 right-0 top-0 flex flex-col justify-center items-center">
         <div className="z-50 flex flex-col justify-between bg-audiocolor-w1 mx-6 mt-6 p-6 rounded-lg gap-3 md:p-10 md:gap-8">

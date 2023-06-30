@@ -5,7 +5,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const {name, email, phone, address, zip, city, country, payment, eMoneyNum, eMoneyPIN, total, shipping, vat, grandTotal} = req.body
+    const {name, email, phone, address, zip, city, country, payment, eMoneyNum, eMoneyPIN, total, shipping, vat, grandTotal, products} = req.body
     try{
         await prisma.checkout.create({
             data: {
@@ -23,7 +23,10 @@ export default async function handler(
                 shipping,
                 vat,
                 grandTotal,
-                orderSubmitted: true
+                orderSubmitted: true,
+                products: {
+                    connect: products
+                }
             }
         })
         res.status(200).json({message: 'Customer record created'})

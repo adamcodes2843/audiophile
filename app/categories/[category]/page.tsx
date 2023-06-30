@@ -18,10 +18,10 @@ export default function Category({params}: {
               <li key={product.name} className={`flex flex-col ${product.slug === 'xx99-mark-one-headphones' || product.slug === 'zx7-speaker' ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:gap-20 xl:gap-32 items-center text-center justify-between mb-20 md:mb-32 lg:mb-20 xl:mb-32`}>
                 <img src={`/../.${product.categoryImage.mobile}`} alt="" className="rounded-lg mb-8 md:hidden" />
                 <img src={`/../.${product.categoryImage.tablet}`} alt="" className="rounded-lg mb-12 hidden md:block lg:hidden" />
-                <img src={`/../.${product.categoryImage.desktop}`} alt="" className={`rounded-lg mb-8 hidden lg:block lg:w-1/2`} />
+                <img src={`/../.${product.categoryImage.desktop}`} alt="" className={`rounded-lg mb-8 hidden lg:block lg:w-1/2 lg:h-auto`} />
                 <div className="lg:flex lg:flex-col lg:w-1/2 lg:items-start xl:pr-3">
                 {
-                  product.new && <h4 className="text-overline text-audiocolor-oj2 mb-6  md:mb-3">{product.new && 'NEW PRODUCT'}</h4>
+                  product.new && <h4 className="text-overline text-audiocolor-oj2 mb-6 md:mb-3">{product.new && 'NEW PRODUCT'}</h4>
                 }
                 <h2 className="text-H4 md:text-H2">{product.name.split(' ').slice(0, product.name.split(' ').length - 1).join(' ')}</h2>
                 <h2 className="text-H4 mb-6 lg:mb-3 md:text-H2">{product.name.split(' ').slice(product.name.split(' ').length-1,).join() }</h2>

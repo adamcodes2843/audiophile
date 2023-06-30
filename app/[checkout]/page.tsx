@@ -1,6 +1,7 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { AppContext } from '../Components/Context-Provider'
 import Summary from "./Summary"
 import Link from 'next/link'
 import BillingDetails from './BillingDetails'
@@ -23,6 +24,7 @@ interface CustomerCheckout {
   shipping: number | string,
   vat: number | string
   grandTotal: number | string
+  products: []
 }
 
 const Checkout = () => {
@@ -44,8 +46,11 @@ const Checkout = () => {
     total: '',
     shipping: '',
     vat: '',
-    grandTotal: ''
+    grandTotal: '',
+    products: []
   })
+  const {setShowCart, cartItems, setCartItems}:any = useContext(AppContext)
+  console.log(cartItems)
 
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
@@ -56,20 +61,18 @@ const Checkout = () => {
   let validCountry = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]+$/.test(checkoutData.country)
   let validEMoneyNum = /(^\d{9}$)/gm.test(checkoutData.eMoneyNum)
   let validEMoneyPIN = /(^\d{4}$)/gm.test(checkoutData.eMoneyPIN)
-  console.log(summaryItems)
-  console.log(checkoutData)
 
   useEffect(() => {
-    if (checkoutData.payment === 'e-Money' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && validEMoneyNum && validEMoneyPIN) {
+    if (checkoutData.payment === 'e-Money' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && validEMoneyNum && validEMoneyPIN && cartItems.length >= 1) {
       setFormDisabled(false)
     }
-    else if (checkoutData.payment === 'cash-on-delivery' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry) {
+    else if (checkoutData.payment === 'cash-on-delivery' && validName && validEmail && validPhone && validZip && validAddress && validCity && validCountry && cartItems.length >= 1) {
       setFormDisabled(false)
     }
-    else if (checkoutData.payment === 'e-Money' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry || !validEMoneyNum || !validEMoneyPIN) {
+    else if (checkoutData.payment === 'e-Money' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry || !validEMoneyNum || !validEMoneyPIN || cartItems.length < 1) {
       setFormDisabled(true)
     }
-    else if (checkoutData.payment === 'cash-on-delivery' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry) {
+    else if (checkoutData.payment === 'cash-on-delivery' && !validName || !validEmail || !validPhone || !validZip || !validAddress || !validCity || !validCountry || cartItems.length < 1) {
       setFormDisabled(true)
     }
   }, [checkoutData])
@@ -94,14 +97,20 @@ const Checkout = () => {
             }, 0) * 0.2),
           grandTotal: data.reduce((total:number, curr:any) => {
             return total + (curr.price * curr.quantity)
-            }, 0) + 50
+            }, 0) + 50,
+          products: data.map((item:any)=> ({id: item.id}))
           })
     })
   }, [])
+
+  useEffect(()=> {
+    setShowCart(false)
+  }, [])
   
-  const handleSubmit = (e:any, data: CustomerCheckout) => {
+  const handleSubmit = (e: any, data: CustomerCheckout) => {
     e.preventDefault()
     addCustomerRecord(data)
+    updatePurchasedProducts()
     setSubmitted(true)
   }
 
@@ -114,6 +123,21 @@ const Checkout = () => {
         },
         method: 'POST'
       })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function updatePurchasedProducts(){
+    try{
+      fetch('/api/updatePurchasedProducts', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PATCH'
+      })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
     } catch (error) {
       console.log(error)
     }
@@ -133,7 +157,7 @@ const Checkout = () => {
           </div>
           <Summary summaryItems={summaryItems} formDisabled={formDisabled} setFormDisabled={setFormDisabled} checkoutData={checkoutData} />
         </form>
-        {submitted && <ThankYou summaryItems={summaryItems} setSubmitted={setSubmitted} checkoutData={checkoutData} expandList={expandList} setExpandList={setExpandList} />}
+        {submitted && <ThankYou summaryItems={summaryItems} setSubmitted={setSubmitted} checkoutData={checkoutData} expandList={expandList} setExpandList={setExpandList} setCartItems={setCartItems} />}
     </div>
   )
 }

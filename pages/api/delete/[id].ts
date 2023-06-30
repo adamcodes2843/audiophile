@@ -9,7 +9,9 @@ export default async function handler(
 
     if(req.method === 'DELETE') {
         const product = await prisma.product.delete({
-            where: {id: Number(productId)}
+            where: {
+                id: Number(productId)
+            }
         })
         res.json(product)
     } else {

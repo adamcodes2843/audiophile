@@ -5,7 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const {product, cartImage, price, category, quantity, slug} = req.body
+    const {product, cartImage, price, category, quantity, slug, id} = req.body
       try {
         await prisma.product.create({
           data: {
@@ -14,7 +14,8 @@ export default async function handler(
             cartImage,
             price,
             category,
-            quantity
+            quantity,
+            id
           }
         })
         res.status(200).json({message: 'Product added to cart'})

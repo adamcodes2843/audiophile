@@ -1,11 +1,15 @@
 'use client'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { AppContext } from './Context-Provider'
 
-const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
-
+const Cart = () => {
+    const {cartItems, setCartItems, setItemInCart}:any = useContext(AppContext)
+    
     let removeAll = () => {
         removeAllItems()
-        window.location.reload()
+        setCartItems([])
+        setItemInCart(false)
     }
 
     let incrementQuantity = (id:number) => {
@@ -27,7 +31,7 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
             }
             if(product.id === id && product.quantity <= 1){
                 deleteProduct(String(id))
-                window.location.reload()
+                return({...product, quantity: product.quantity - 1})
             }
             return product
         })
@@ -90,12 +94,12 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
     <div className="fixed z-40 w-full mt-24 h-full bg-audiocolor-b2 bg-opacity-30 overflow-hidden max-w-[1440px] mx-auto left-0 right-0 pl-6">
         <div className="z-50 flex flex-col max-w-md md:w-1/2 justify-between bg-audiocolor-w1 mx-6 ml-auto md:mr-10 lg:mr-40 lg:ml-auto mt-6 p-6 rounded-lg">
             <div className="flex flex-row justify-between">
-            <h6 className="text-H6">{`CART (${cartItems && cartItems.length})`}</h6>
+            <h6 className="text-H6">{`CART (${cartItems && cartItems.filter((x:any) => x.quantity > 0).length})`}</h6>
             <button type="button" onClick={() => removeAll()} className="opacity-50 underline hover:text-audiocolor-oj2 hover:opacity-100">Remove all</button>
             </div>
             <ul className="flex flex-col gap-6 my-6">
-                {cartItems ? cartItems.map((item:any )=> (
-                    <li key={item.id} className={`flex items-center`}>
+                {cartItems ? cartItems?.map((item:any | undefined )=> (
+                    <li key={item.id} className={`flex items-center ${!item.quantity && 'hidden'}`}>
                         <img src={`/../.${item.cartImage}`} alt={item.product} width={70} height={70} className="rounded-xl mr-4 md:mr-6 w-16 h-16 md:w-20 md:h-20" />
                         <div className="flex flex-col justify-center">
                             <p className="font-bold">{item.product}</p>
@@ -115,7 +119,7 @@ const Cart = ({setShowCart, cartItems, setCartItems}:any) => {
             return total + (curr.price * curr.quantity)
         }, 0).toLocaleString()}</h6>
             </div>
-            <Link href='/checkout' onClick={() => setShowCart(false)} className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2 text-center">CHECKOUT</Link>
+            <Link href='/checkout' className="bg-audiocolor-oj2 hover:bg-audiocolor-oj1 text-audiocolor-w1 py-3 my-2 text-center">CHECKOUT</Link>
         </div>
     </div>
   )
