@@ -50,7 +50,6 @@ const Checkout = () => {
     products: []
   })
   const {setShowCart, cartItems, setCartItems}:any = useContext(AppContext)
-  console.log(cartItems)
 
   let validName = /^[a-zA-Z]+ [a-zA-Z]+$/.test(checkoutData.name)
   let validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutData.email)
@@ -78,7 +77,7 @@ const Checkout = () => {
   }, [checkoutData])
 
   useEffect(()=> {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/getCartItems`)
+    fetch(`${process.env.BASE_URL}/api/getCartItems`)
     .then(response => {
         if(!response.ok) {
             throw Error('could not fetch the data for theat resource')
@@ -116,7 +115,7 @@ const Checkout = () => {
 
   async function addCustomerRecord(data: CustomerCheckout){
     try{
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/createCustomerRecord`, {
+      fetch(`${process.env.BASE_URL}/api/createCustomerRecord`, {
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -130,7 +129,7 @@ const Checkout = () => {
 
   async function updatePurchasedProducts(){
     try{
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/updatePurchasedProducts`, {
+      fetch(`${process.env.BASE_URL}/api/updatePurchasedProducts`, {
         headers: {
           'Content-Type': 'application/json'
         },
