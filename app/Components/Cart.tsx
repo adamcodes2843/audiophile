@@ -53,7 +53,7 @@ const Cart = () => {
 
     async function decrementProduct(id:string) {
         try {
-            fetch(`/pages/api/decrement/${id}`, {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/decrement/${id}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -66,7 +66,7 @@ const Cart = () => {
     
     async function deleteProduct(id:string) {
         try {
-            fetch(`/pages/api/delete/${id}`, {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/delete/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -79,7 +79,7 @@ const Cart = () => {
 
     async function removeAllItems() {
         try{
-            fetch(`/pages/api/removeAll`, {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages/api/removeAll`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
