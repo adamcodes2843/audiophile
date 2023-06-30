@@ -42,7 +42,7 @@ const AddToCart = ({params, productData}:any) => {
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.BASE_URL}/api/getCartItems`)
+    fetch(`${process.env.BASE_URL}/pages/api/getCartItems`)
     .then(res => {
       if (!res.ok){
         throw Error('could not fetch the data for that resource')
@@ -65,7 +65,7 @@ const AddToCart = ({params, productData}:any) => {
 
   async function addItem(data: ItemPost) {
     try {
-      fetch(`${process.env.BASE_URL}/api/createCartItem`, {
+      fetch(`${process.env.BASE_URL}/pages/api/createCartItem`, {
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ const AddToCart = ({params, productData}:any) => {
 
   async function updateProduct(id:string, quan:string) {
     try{
-      fetch(`${process.env.BASE_URL}/api/update/${id}`, {
+      fetch(`${process.env.BASE_URL}/pages/api/update/${id}`, {
         body: JSON.stringify({
           quantity: quan
         }),
