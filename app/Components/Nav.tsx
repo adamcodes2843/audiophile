@@ -15,7 +15,7 @@ const Nav = () => {
     const params = useParams()
 
     async function fetchCartData(){
-      fetch(`${process.env.BASE_URL}/api/getCartItems`)
+      fetch(`/api/getCartItems`)
       .then(response => {
           if(!response.ok) {
               throw Error('could not fetch the data for that resource')
@@ -50,7 +50,7 @@ console.log(fetchCartData)
     }
 
     useEffect(() => {
-      fetch(`${process.env.BASE_URL}/api/getCartItems`)
+      fetch(`/api/getCartItems`)
       .then(response => {
           if(!response.ok) {
               throw Error('could not fetch the data for that resource')
