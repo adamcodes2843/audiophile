@@ -111,7 +111,7 @@ const Cart = () => {
                             <button type="button" onClick={() => incrementQuantity(item.id)} className="opacity-25 hover:opacity-100 hover:text-audiocolor-oj2 hover:font-bold">+</button>
                         </div>
                     </li>
-                    )) : 'no items'}
+                    )) : ''}
                 </ul>
             <div className="flex flex-row justify-between">
                 <p className="opacity-50">TOTAL</p>

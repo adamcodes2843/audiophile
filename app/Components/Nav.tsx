@@ -26,7 +26,6 @@ const Nav = () => {
           setCartItems(data)
       })
     }
-console.log(fetchCartData)
     const categorySwitch = () => {
       if (!showCategories) {
         setShowCart(false)
@@ -75,9 +74,9 @@ console.log(fetchCartData)
             <Link href='/categories/speakers' className="hover:text-audiocolor-oj2">SPEAKERS</Link>
             <Link href='/categories/earphones' className="hover:text-audiocolor-oj2">EARPHONES</Link>
           </ul>
-          <button type="button" className={`md:ml-auto rounded-full p-2 relative`} onClick={() => cartSwitch()}>
+          <button type="button" className={`md:ml-auto rounded-full p-2 relative border-2 ${showCart ? 'border-audiocolor-oj2' : "border-audiocolor-b2"}`} onClick={() => cartSwitch()}>
           <img src={'/../assets/cart/CombinedShape.svg'} alt="cart" />
-          {cartItems && cartItems.filter((prod:any) => prod.quantity != 0).length > 0 && <div className="absolute bottom-[1.3rem] left-[1.1rem] text-audiocolor-oj2">{cartItems.filter((prod:any) => prod.quantity != 0).length}</div>}
+          {cartItems && cartItems.filter((prod:any) => prod.quantity != 0).length > 0 && <div className={`absolute bottom-[1.3rem] left-[1.1rem] text-audiocolor-oj2 ${showCart && 'hidden'}`}>{cartItems.filter((prod:any) => prod.quantity != 0).length}</div>}
           </button>
       </nav>
       {
