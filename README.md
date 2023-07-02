@@ -1,24 +1,28 @@
-# Frontend Mentor - Audiophile e-commerce website
+[Live Site](https://audiophile-fullstack-e-commerce.vercel.app/)
 
-![Design preview for the Audiophile e-commerce website coding challenge](./preview.jpg)
+# Frontend Mentor - Audiophile e-commerce website solution
 
-## Welcome! 👋
+This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+## Table of contents
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+## Overview
 
-## The challenge
+This is a fullstack e-commerce website that utilitizes next 13 experiemental app features, ssr, for seo and quick load times, and client components for user interactions. React context api is used for state management. The database schema and api queries are handeled by prisma, which translates to sql. I used railway to host a postgres database. Create, Read, Update and Delete are all here, and data persists when reloading or leaving the website. The app uses dynamic routes and the pages are styled using tailwind. It's responsive and the design changes for mobile, tablet and desktop.
 
-Your challenge is to build out this multi-page e-commerce website and get it looking as close to the design as possible.
+### The challenge
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-If you choose to use a JS-heavy approach, we provide a local `data.json` file for the products. If you want to take it up a notch, feel free to build this as a full-stack application or use a headless CMS!
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -32,29 +36,53 @@ Your users should be able to:
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+Check the screenshots folder
 
-Your task is to build out the project to the design file provided. We provide both Sketch and Figma versions of the design, so you can choose which tool you prefer to use. You can download the design file on the platform. **Please be sure not to share them with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+### Links
 
-All the required assets for this project are in the `/assets` folder. The assets are already exported for the correct screen size and optimized. Some images are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+- [Solution](https://www.frontendmentor.io/profile/adamcodes2843)
+- [Live Site](https://audiophile-fullstack-e-commerce.vercel.app/)
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project.
+## My process
 
-We've prepared the challenge to let you choose your approach. We have separate `.html` files for all pages and products that include the content. However, if you prefer to practice a more JS-heavy approach, you could choose to use the local `data.json` and a library/framework like React, Vue, Angular, etc.
+ Using the figma file, I got familiar with the pages and layout of the website. I consider the functionality and decided on a build, seen below, installed everything and started by changing the tailwind.config to match the design system's colors and typography. Then, using the data.json file, image assets, jsx and tailwind, I started creating and styling the components of the home page, beginning with the mobile version. Using next 13, I set up the routes to dynamically render the category and product pages. Once the the flex and grids and maps and filters etc were in place for the mobile, tablet and desktop version of the app, I started using state to create client components like the checkout form, thank you popup, and a cart. I tried to do everything I could on the frontend before setting up the prisma schema, client, railway account, and postgres database and begin work on the backend. Finallyl, CRUD operations, prisma queries, api fetches, and useContext got this project to the finish line and was deployed on vercel. As my first fullstack app, it was much more complicated than this quick summary would imply. There were a lot of youtube videos and google questions that helped me through each step of the project. 
 
-Feel free to edit the JSON structure however you like. If you want to practice working with a professional image hosting service, you could upload the images to a free [Cloudinary](https://cloudinary.com/) account and use their URLs instead of relative paths.
+### Built with
 
-## Building your project
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Prisma](https://prisma.io)
+- [Railway](https://railway.app/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Vercel](https://vercel.com)
+- [TypeScript](https://www.typescriptlang.org/)
+- Flexbox and Grid
+- Mobile-first workflow
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub. With these premium challenges, please be sure not to share the design files in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+### What I learned
 
-**Have fun building!** 🚀
+- When building and styling components that are recycled on different pages, be careful with how you set up margins, padding, etc.
+- I exported images from figma when the provided images didn't match the design. I used figma for tailwind configuration and to check the details for how to style pieces of the components.
+- Prisma schema, global client, cli commands, queries, etc.
+- I used a variety of api requests to perform crud operations on the database.
+- Using context and state to manage user input, what is displayed in the browser, and interact with the database 
+- Deployment logs on vercel come in handy when your api requests aren't working in production the way they do in development.
+- Persistence is key
+
+### Continued development
+- Server components and Next 13 features
+- Best practices and getting faster
+- Error handeling
+- Simplifying the styling process
+- Prisma
+- API requests and working with databases
+- Typescript rules
+
+## Author
+
+- Github - [Add your name here](https://github.com/adamcodes2843)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/adamcodes2843)
