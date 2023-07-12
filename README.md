@@ -43,11 +43,12 @@ Check the screenshots folder
 ### Links
 
 - [Solution](https://www.frontendmentor.io/profile/adamcodes2843)
+- [Git Repo](https://github.com/adamcodes2843/audiophile)
 - [Live Site](https://audiophile-fullstack-e-commerce.vercel.app/)
 
 ## My process
 
- Using the figma file, I got familiar with the pages and layout of the website. I consider the functionality and decided on a build, seen below, installed everything and started by changing the tailwind.config to match the design system's colors and typography. Then, using the data.json file, image assets, jsx and tailwind, I started creating and styling the components of the home page, beginning with the mobile version. Using next 13, I set up the routes to dynamically render the category and product pages. Once the the flex and grids and maps and filters etc were in place for the mobile, tablet and desktop version of the app, I started using state to create client components like the checkout form, thank you popup, and a cart. I tried to do everything I could on the frontend before setting up the prisma schema, client, railway account, and postgres database and begin work on the backend. Finallyl, CRUD operations, prisma queries, api fetches, and useContext got this project to the finish line and was deployed on vercel. As my first fullstack app, it was much more complicated than this quick summary would imply. There were a lot of youtube videos and google questions that helped me through each step of the project. 
+ Using the figma file, I got familiar with the pages and layout of the website. I consider the functionality and decided on a build, seen below, installed everything and started by changing the tailwind.config to match the design system's colors and typography. Then, using the data.json file, image assets, jsx and tailwind, I started creating and styling the components of the home page, beginning with the mobile version. Using next 13, I set up the routes to dynamically render the category and product pages. Once the the flex and grids and maps and filters etc were in place for the mobile, tablet and desktop version of the app, I started using state to create client components like the checkout form, thank you popup, and a cart. I tried to do everything I could on the frontend before setting up the prisma schema, client, railway account, and postgres database and begin work on the backend. Finally, CRUD operations, prisma queries, api fetches, and useContext got this project to the finish line and was deployed on vercel. As my first fullstack app, it was much more complicated than this quick summary would imply. There were a lot of youtube videos and google questions that helped me through each step of the project. 
 
 ### Built with
 
