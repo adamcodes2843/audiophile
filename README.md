@@ -1,4 +1,4 @@
-[Live Site](https://audiophile-fullstack-e-commerce.vercel.app/)
+[Live Site](https://audiophile-three-rose.vercel.app/)
 
 # Frontend Mentor - Audiophile e-commerce website solution
 
@@ -44,7 +44,7 @@ Check the screenshots folder
 
 - [Solution](https://www.frontendmentor.io/profile/adamcodes2843)
 - [Git Repo](https://github.com/adamcodes2843/audiophile)
-- [Live Site](https://audiophile-fullstack-e-commerce.vercel.app/)
+- [Live Site](https://audiophile-three-rose.vercel.app/)
 
 ## My process
 
